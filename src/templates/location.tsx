@@ -26,7 +26,9 @@ import Hours from "../components/hours";
 import List from "../components/list";
 import PageLayout from "../components/page-layout";
 import StaticMap from "../components/static-map";
+import ReactMarkdown from 'react-markdown'
 import "../index.css";
+import { getRuntime, isProduction } from "@yext/pages/util";
 
 /**
  * Required when Knowledge Graph data is used for a template.
@@ -140,6 +142,7 @@ const Location: Template<TemplateRenderProps> = ({
   return (
     <>
       <PageLayout _site={_site}>
+        {!getRuntime().isServerSide && <ReactMarkdown># Hello, *world*!</ReactMarkdown>}
         <Banner name={name} address={address} openTime={openTime}>
           <div className="bg-white h-40 w-1/5 flex items-center justify-center text-center flex-col space-y-4 rounded-lg">
             <div className="text-black text-base">Visit Us Today!</div>
